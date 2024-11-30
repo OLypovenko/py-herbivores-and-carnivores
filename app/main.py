@@ -18,9 +18,8 @@ class Animal:
         if self in Animal.alive:
             Animal.alive.remove(self)
 
-    @classmethod
-    def __str__(cls) -> str:
-        return str([str(animal) for animal in cls.alive])
+    def __str__(self) -> str:
+        return str([str(animal) for animal in self.alive])
 
 
 class Herbivore(Animal):
@@ -29,7 +28,7 @@ class Herbivore(Animal):
 
 
 class Carnivore(Animal):
-    def bite(self, target: int) -> None:
+    def bite(self, target: Herbivore) -> None:
         if not isinstance(target, Herbivore):
             return
         if target.hidden:
